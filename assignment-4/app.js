@@ -8,15 +8,12 @@ const app = Vue.createApp({
   },
   computed: {
     paragraphClass() {
-      let classes = [];
-      if (this.classControlInput == 'user1') {
-        classes.push('user1');
-      } else if (this.classControlInput == 'user2') {
-        classes.push('user2');
-      }
-
-      classes.push(this.paragraphIsVisible ? 'visible' : 'hidden');
-      return classes;
+      return {
+        user1: this.classControlInput === 'user1',
+        user2: this.classControlInput === 'user2',
+        visible: this.paragraphIsVisible,
+        hidden: !this.paragraphIsVisible,
+      };
     }
   },
   methods: {
